@@ -1,5 +1,6 @@
 #include <iostream>
 
+
 using namespace std;
 
 void mostrarvec(int vec[], int dim)
@@ -33,38 +34,24 @@ void invertvec(int vec[],int C){
                 }
         }
 void invertmat(int mat[][5],int C) {
-            const int V = 5;
-            int v = 0;
-            int c = 0;
-            int vech[C];
-            int vecv[V];
-            int j=0;
-            int i=j;
-    
-            while(v!=5) {
-    
-            for ( i ; i < C; i++) {
-                    vech[i] = mat[v][i];
-            }
-            i=j;
+        
+        const int V = C;
+        int save;
+        int j = 0;
+        int p = 1;
+        
+        while (p<C) {
+                
+                for (int i = p; i < V; i++) {
 
-            for ( i ; i < C; i++) {
-                    vecv[i] = mat[i][c];
-            }
-            i=j;
+                        save = mat[i][j];
+                        mat[i][j] = mat[j][i];
+                        mat[j][i] = save;
 
-            for ( i ; i < C; i++) {
-                    mat[v][i] = vecv[i];
-            }
-           i=j;
-
-            for ( i; i < C; i++) {
-                    mat[i][c] = vech[i];
-            }
-            i=j;
-            v=v+1;
-            c=c+1;
-            j=j+1;
+                }
+                
+                p++;
+                j++;
         }
 }
 int main()
